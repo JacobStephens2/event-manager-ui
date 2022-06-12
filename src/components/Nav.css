@@ -1,0 +1,9 @@
+nav {
+  border-bottom: solid 1px;
+  padding-bottom: 1rem;
+  padding-top: 0.7rem;
+}
+
+nav a {
+  text-decoration: none;
+}
