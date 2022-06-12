@@ -1,3 +1,8 @@
+# Steward Goods Event Manager
+
+This app aims to be a tool to help facilitate event management.
+
+---
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
