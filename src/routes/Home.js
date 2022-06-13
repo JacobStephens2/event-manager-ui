@@ -3,7 +3,10 @@ import Nav from '../components/Nav.js';
 
 function Home() {
   return (
-    <Nav />
+    <>
+      <Nav />
+      <h1>Event Manager</h1>
+    </>
   );
 }
 

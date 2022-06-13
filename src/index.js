@@ -10,6 +10,7 @@ import {
 import Home from './routes/Home';
 import Login from './routes/Login';
 import SignUp from './routes/SignUp';
+import NotFound from './routes/NotFound';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,6 +20,7 @@ root.render(
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
