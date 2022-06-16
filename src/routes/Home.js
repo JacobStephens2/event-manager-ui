@@ -8,7 +8,7 @@ function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch('http://api.eventmanager.stewardgoods.local/').then(
+      const result = await fetch(process.env.REACT_APP_API_ORIGIN + '/').then(
         response => response.json()
       );
       setData(result);
