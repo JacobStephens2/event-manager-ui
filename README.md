@@ -6,6 +6,10 @@ The corresponding API is at https://api.eventmanager.stewardgoods.com/
 
 The API's repository is at https://github.com/JacobStephens2/event-manager-ui
 
+## React.js and Create React App
+
+This project uses the JavaScript framework, React.js (https://reactjs.org/) and the corresponding setup framework Create React App (https://create-react-app.dev/).
+
 ---
 ## Getting Started with Create React App
 
