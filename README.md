@@ -8,7 +8,7 @@ The API's repository is at https://github.com/JacobStephens2/event-manager-ui
 
 ## React.js and Create React App
 
-This project uses the JavaScript framework, React.js (https://reactjs.org/) and the corresponding setup framework Create React App (https://create-react-app.dev/).
+This project uses the JavaScript framework, React.js 18 (https://reactjs.org/, https://reactjs.org/blog/2022/03/29/react-v18.html) and was setup using Create React App (https://create-react-app.dev/).
 
 ---
 ## Getting Started with Create React App
