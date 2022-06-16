@@ -2,6 +2,10 @@
 
 This app aims to be a tool to help facilitate event management.
 
+The corresponding API is at https://api.eventmanager.stewardgoods.com/
+
+The API's repository is at https://github.com/JacobStephens2/event-manager-ui
+
 ---
 ## Getting Started with Create React App
 
