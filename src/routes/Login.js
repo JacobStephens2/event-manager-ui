@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from '../components/Nav.js';
 import './Login.css';
-import { Formik } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 const Login = () => {
@@ -27,40 +27,21 @@ const Login = () => {
           }, 400);
         }}
       >
-        {formik => (
-          <form onSubmit={formik.handleSubmit}>
-            <label htmlFor='firstName'>First Name</label>
-            <input
-              id='firstName'
-              type='text'
-              {...formik.getFieldProps('firstName')}
-            />
-            {formik.touched.firstName && formik.errors.firstName ? (
-              <div>{formik.errors.firstName}</div>
-            ) : null}
+        <Form>
+          <label htmlFor="firstName">First Name</label>
+          <Field name="firstName" type="text" />
+          <ErrorMessage name="firstName" />
 
-            <label htmlFor='lastName'>Last Name</label>
-            <input
-              id='lastName'
-              type='text'
-              {...formik.getFieldProps('lastName')}
-            />
-            {formik.touched.lastName && formik.errors.lastName ? (
-              <div>{formik.errors.lastName}</div>
-            ) : null}
+          <label htmlFor="firstName">Last Name</label>
+          <Field name="lastName" type="text" />
+          <ErrorMessage name="lastName" />
 
-            <label htmlFor='email'>Email</label>
-            <input
-              id='email'
-              type='email'
-              {...formik.getFieldProps('email')}
-            />
-            {formik.touched.email && formik.errors.email ? (
-              <div>{formik.errors.email}</div>
-            ) : null}
-            <button type='submit'>Submit</button>
-          </form>
-        )}
+          <label htmlFor="email">Email Address</label>
+          <Field name="email" type="email" />
+          <ErrorMessage name="email" />
+
+          <button type="submit">Login</button>
+        </Form>
       </Formik>
     </>
   );
