@@ -10,9 +10,9 @@ const Login = () => {
       <Nav />
       <h1>Login</h1>
       <Formik
-        initialValues={{ email: '', name: '' }}
+        initialValues={{ email: '', password: '' }}
         validationSchema={Yup.object({
-          name: Yup.string()
+          password: Yup.string()
             .required('Required'),
           email: Yup.string()
             .email('Invalid email address')
@@ -20,8 +20,9 @@ const Login = () => {
         })}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(false);
-          fetch(process.env.REACT_APP_API_ORIGIN + '/mimic-json', {
+          fetch(process.env.REACT_APP_API_ORIGIN + '/login', {
             method: 'POST',
+            credentials: 'include',
             headers: {
               'Content-Type': 'application/json',
             },
@@ -36,9 +37,9 @@ const Login = () => {
           <Field name="email" type="email" />
           <ErrorMessage name="email" />
 
-          <label htmlFor="name">Name</label>
-          <Field name="name" type="name" />
-          <ErrorMessage name="name" />
+          <label htmlFor="password">Password</label>
+          <Field name="password" type="password" />
+          <ErrorMessage name="password" />
 
           <button type="submit">Login</button>
         </Form>
