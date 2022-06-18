@@ -1,4 +1,3 @@
-import './Home.css';
 import Nav from '../components/Nav.js';
 import React, { useState, useEffect } from 'react';
 
