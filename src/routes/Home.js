@@ -20,7 +20,8 @@ function Home() {
     <>
       <Nav />
       <h1>Event Manager</h1>
-      <p>The following text is from the API: {data.message}</p>
+      <p>The following text is from the Event Manager API:</p>
+      <p>{data.message}</p>
     </>
   );
 }
