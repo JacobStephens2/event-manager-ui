@@ -8,9 +8,8 @@ function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch(process.env.REACT_APP_API_ORIGIN + '/').then(
-        response => response.json()
-      );
+      const result = await fetch(process.env.REACT_APP_API_ORIGIN + '/')
+        .then(response => response.json());
       setData(result);
     };
     fetchData();
