@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Nav from '../components/Nav.js';
 import './Login.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 const Login = () => {
+  const [loginState, setLoginState] = useState('');
+
   return (
     <>
       <Nav />
       <h1>Login</h1>
+      <p>{loginState}</p>
       <Formik
         initialValues={{ email: '', password: '' }}
         validationSchema={Yup.object({
@@ -29,7 +32,10 @@ const Login = () => {
             body: JSON.stringify(values, null, 2)
           })
             .then(response => response.json())
-            .then(data => console.log(data));
+            .then(data => {
+              console.log(data);
+              setLoginState(data.message);
+            })
         }}
       >
         <Form>
