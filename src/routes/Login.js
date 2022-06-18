@@ -21,10 +21,11 @@ const Login = () => {
           email: Yup.string().email('Invalid email address').required('Required'),
         })}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+          fetch(process.env.REACT_APP_API_ORIGIN + '/')
+            .then(response => response.json())
+            .then(data => console.log(data));
         }}
       >
         <Form>
