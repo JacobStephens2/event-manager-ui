@@ -3,6 +3,7 @@ import Nav from '../components/Nav.js';
 import './Login.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import Cookies from 'universal-cookie';
 
 const Login = () => {
   const [loginState, setLoginState] = useState('');
@@ -35,6 +36,11 @@ const Login = () => {
             .then(data => {
               console.log(data);
               setLoginState(data.message);
+              if (data.message == 'Log in succeeded') {
+                const cookies = new Cookies();
+                cookies.set('loginState', 'loggedIn', { path: '/' });
+                console.log(cookies.get('loginState')); // Pacman
+              }
             })
         }}
       >
