@@ -1,4 +1,3 @@
-import Nav from '../components/Nav.js';
 import React, { useState, useEffect } from 'react';
 
 function Home() {
@@ -16,7 +15,6 @@ function Home() {
 
   return (
     <>
-      <Nav />
       <h1>Event Manager</h1>
       <p>The following text is from the Event Manager API:</p>
       <p>{data.message}</p>

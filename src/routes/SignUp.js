@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Nav from '../components/Nav.js';
 import './SignUp.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -9,7 +8,6 @@ function SignUp() {
 
   return (
     <>
-      <Nav />
       <h1>Sign Up</h1>
       <p>{signUpState}</p>
       <Formik

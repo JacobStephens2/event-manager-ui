@@ -3,16 +3,16 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import Cookies from 'universal-cookie';
 
-
-function LoggedInNav() {
-  function handleLogoutClick() {
+function LoggedInNav(props) {
+  function logout() {
     const cookies = new Cookies();
-    cookies.set('loginCookie', 'loggedOut', { path: '/' });
+    cookies.set('loggedIn', 'false', { path: '/' });
+    window.location.href = window.location.origin;
   }
   return (
     <>
-      <button onClick={handleLogoutClick}>
-        Log Out&emsp;
+      <button onClick={logout}>
+        Log Out
       </button>
       <Link to="/account">Account</Link>
     </>

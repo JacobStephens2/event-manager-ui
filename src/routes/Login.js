@@ -1,18 +1,14 @@
-import React, { useState } from 'react';
-import Nav from '../components/Nav.js';
+import React from 'react';
 import './Login.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Cookies from 'universal-cookie';
 
-function Login() {
-  const [loginState, setLoginState] = useState('');
+function Login(props) {
 
   return (
     <>
-      <Nav />
       <h1>Login</h1>
-      <p>{loginState}</p>
       <Formik
         initialValues={{ email: '', password: '' }}
         validationSchema={Yup.object({
@@ -35,10 +31,10 @@ function Login() {
             .then(response => response.json())
             .then(data => {
               console.log(data);
-              setLoginState(data.message);
               if (data.message == 'Log in succeeded') {
                 const cookies = new Cookies();
-                cookies.set('loginCookie', 'loggedIn', { path: '/' });
+                cookies.set('loggedIn', 'true', { path: '/' });
+                window.location.href = window.location.origin;
               }
             })
         }}
