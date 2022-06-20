@@ -7,3 +7,9 @@ nav {
 nav a {
   text-decoration: none;
 }
+
+button {
+  display: inline;
+  margin-left: 1rem;
+  margin-top: 0;
+}

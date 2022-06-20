@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import Cookies from 'universal-cookie';
 
-function LoggedInNav(props) {
+function LoggedInNav() {
   function logout() {
     const cookies = new Cookies();
     cookies.set('loggedIn', 'false', { path: '/' });
@@ -11,10 +11,10 @@ function LoggedInNav(props) {
   }
   return (
     <>
+      <Link to="/account">Account</Link>
       <button onClick={logout}>
         Log Out
       </button>
-      <Link to="/account">Account</Link>
     </>
   )
 }

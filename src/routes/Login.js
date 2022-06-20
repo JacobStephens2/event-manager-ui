@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Cookies from 'universal-cookie';
 
-function Login(props) {
+function Login() {
 
   return (
     <>

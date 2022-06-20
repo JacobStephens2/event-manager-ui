@@ -11,7 +11,7 @@ import Account from './routes/Account';
 import NotFound from './routes/NotFound';
 import Nav from './components/Nav.js';
 
-function App(props) {
+function App() {
   return (
     <>
       <BrowserRouter>
