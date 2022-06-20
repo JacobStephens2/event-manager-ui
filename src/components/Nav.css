@@ -8,7 +8,7 @@ nav a {
   text-decoration: none;
 }
 
-button {
+nav button {
   display: inline;
   margin-left: 1rem;
   margin-top: 0;
