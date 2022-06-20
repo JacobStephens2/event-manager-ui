@@ -22,6 +22,7 @@ function Login() {
           setSubmitting(false);
           fetch(process.env.REACT_APP_API_ORIGIN + '/login', {
             method: 'POST',
+            credentials: 'include',
             headers: {
               'Content-Type': 'application/json',
             },
