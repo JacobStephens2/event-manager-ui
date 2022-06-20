@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from '../components/Nav.js';
 
-const NotFound = () => {
+function NotFound() {
   return (
     <>
       <Nav />

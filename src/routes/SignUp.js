@@ -4,7 +4,7 @@ import './SignUp.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-const SignUp = () => {
+function SignUp() {
   const [signUpState, setSignUpState] = useState('');
 
   return (

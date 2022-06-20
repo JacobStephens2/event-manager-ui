@@ -1,20 +1,23 @@
 import './Nav.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import LoggedInNav from './LoggedInNav.js';
+import LoggedOutNav from './LoggedOutNav.js';
 import Cookies from 'universal-cookie';
 
-const cookies = new Cookies();
+function Login() {
 
+  const cookies = new Cookies();
 
-const Login = () => (
-  <nav>
-    <Link to="/">Event Manager</Link>&emsp;
-    <Link to="/sign-up">Sign Up</Link>&emsp;
-    <Link to="/login">Log In</Link>&emsp;
-    {cookies.get('loginState') == 'loggedIn' &&
-      <Link to="/account">Account</Link>
-    }
-  </nav>
-)
+  return (
+    <nav>
+      <Link to="/">Event Manager&emsp;</Link>
+      {cookies.get('loginCookie') == 'loggedIn'
+        ? <LoggedInNav />
+        : <LoggedOutNav />
+      }
+    </nav>
+  )
+}
 
 export default Login;

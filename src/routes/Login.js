@@ -5,7 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Cookies from 'universal-cookie';
 
-const Login = () => {
+function Login() {
   const [loginState, setLoginState] = useState('');
 
   return (
@@ -38,8 +38,7 @@ const Login = () => {
               setLoginState(data.message);
               if (data.message == 'Log in succeeded') {
                 const cookies = new Cookies();
-                cookies.set('loginState', 'loggedIn', { path: '/' });
-                console.log(cookies.get('loginState'));
+                cookies.set('loginCookie', 'loggedIn', { path: '/' });
               }
             })
         }}
