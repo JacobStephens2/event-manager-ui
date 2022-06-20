@@ -39,7 +39,7 @@ const Login = () => {
               if (data.message == 'Log in succeeded') {
                 const cookies = new Cookies();
                 cookies.set('loginState', 'loggedIn', { path: '/' });
-                console.log(cookies.get('loginState')); // Pacman
+                console.log(cookies.get('loginState'));
               }
             })
         }}
