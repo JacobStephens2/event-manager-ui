@@ -8,7 +8,7 @@ function ReadEvents() {
 
   useEffect(() => {
     const fetchEvents = async () => {
-      fetch(process.env.REACT_APP_API_ORIGIN + '/all-events', {
+      fetch(process.env.REACT_APP_API_ORIGIN + '/events', {
         method: 'GET',
         credentials: 'include'
       })

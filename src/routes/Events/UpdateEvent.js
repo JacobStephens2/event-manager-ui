@@ -40,7 +40,7 @@ function UpdateEvent() {
         })}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(false);
-          fetch(process.env.REACT_APP_API_ORIGIN + '/update-event/' + id, {
+          fetch(process.env.REACT_APP_API_ORIGIN + '/event/' + id, {
             method: 'PUT',
             credentials: 'include',
             headers: {

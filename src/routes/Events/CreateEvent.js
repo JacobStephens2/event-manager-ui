@@ -15,7 +15,7 @@ function CreateEvent() {
         })}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(false);
-          fetch(process.env.REACT_APP_API_ORIGIN + '/create-event', {
+          fetch(process.env.REACT_APP_API_ORIGIN + '/event', {
             method: 'POST',
             credentials: 'include',
             headers: {
