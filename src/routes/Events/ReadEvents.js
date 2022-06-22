@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './Events.css';
+import './ReadEvents.css';
+import { Link } from "react-router-dom";
 
-function Events() {
+function ReadEvents() {
 
   const [events, setEvents] = useState([]);
 
@@ -26,13 +27,15 @@ function Events() {
       <h1>Events</h1>
       <ul>
         {events.map((event) =>
-          <li key={event.id}>
-            {event.name}
-          </li>
+          <Link to={'/update-event?id=' + event.id} key={event.id}>
+            <li key={event.id}>
+              {event.name}
+            </li>
+          </Link>
         )}
       </ul>
     </>
   );
 }
 
-export default Events;
+export default ReadEvents;

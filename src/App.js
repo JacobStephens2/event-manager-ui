@@ -7,10 +7,11 @@ import {
 import Home from './routes/Home';
 import Login from './routes/Login';
 import SignUp from './routes/SignUp';
-import Events from './routes/Events';
 import NotFound from './routes/NotFound';
 import Nav from './components/Nav.js';
-import CreateEvent from './routes/CreateEvent';
+import CreateEvent from './routes/Events/CreateEvent';
+import ReadEvents from './routes/Events/ReadEvents';
+import UpdateEvent from './routes/Events/UpdateEvent';
 
 function App() {
   return (
@@ -21,8 +22,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/events" element={<Events />} />
+          <Route path="/events" element={<ReadEvents />} />
           <Route path="/create-event" element={<CreateEvent />} />
+          <Route path="/update-event" element={<UpdateEvent />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -8,7 +8,7 @@ function CreateEvent() {
     <>
       <h1>Create Event</h1>
       <Formik
-        initialValues={{ name: '', password: '' }}
+        initialValues={{ name: '' }}
         validationSchema={Yup.object({
           name: Yup.string()
             .required('Required')
