@@ -26,7 +26,20 @@ function UpdateEvent() {
     fetchEvents();
   }, [])
 
-  let eventName = event.name;
+  function deleteEvent() {
+    fetch(process.env.REACT_APP_API_ORIGIN + '/event', {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: id }, null, 2)
+    })
+      .then(response => response.json())
+      .then(data => {
+        window.location.href = window.location.origin;
+      });
+  }
 
   return (
     <>
@@ -63,6 +76,9 @@ function UpdateEvent() {
         </Form>
       </Formik>
 
+      <button onClick={deleteEvent}>
+        Delete
+      </button>
     </>
   );
 }
