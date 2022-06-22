@@ -9,7 +9,7 @@ function UpdateEvent() {
   const queryString = window.location.search;
   console.log(queryString);
   const urlParams = new URLSearchParams(queryString);
-  const id = urlParams.get('id')
+  const id = urlParams.get('id');
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -40,7 +40,7 @@ function UpdateEvent() {
         })}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(false);
-          fetch(process.env.REACT_APP_API_ORIGIN + '/event/' + id, {
+          fetch(process.env.REACT_APP_API_ORIGIN + '/event', {
             method: 'PUT',
             credentials: 'include',
             headers: {
