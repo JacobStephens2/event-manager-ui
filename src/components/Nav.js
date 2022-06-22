@@ -17,7 +17,7 @@ function Login() {
   }
   return (
     <nav>
-      <Link to="/">Event Manager&emsp;</Link>
+      <Link to="/">Event Manager</Link>
       {setMenuByLoginStatus()}
     </nav>
   )

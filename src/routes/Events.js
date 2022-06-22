@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './Account.css';
+import './Events.css';
 
-function Account() {
+function Events() {
 
   const [events, setEvents] = useState([]);
 
@@ -23,8 +23,7 @@ function Account() {
 
   return (
     <>
-      <h1>Account</h1>
-      <h2>Events</h2>
+      <h1>Events</h1>
       <ul>
         {events.map((event) =>
           <li key={event.id}>
@@ -36,4 +35,4 @@ function Account() {
   );
 }
 
-export default Account;
+export default Events;

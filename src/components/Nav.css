@@ -6,6 +6,16 @@ nav {
 
 nav a {
   text-decoration: none;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+nav a:first-of-type {
+  margin-left: 0;
+}
+
+nav a:last-of-type {
+  margin-right: 0;
 }
 
 nav button {

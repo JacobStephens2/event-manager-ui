@@ -11,7 +11,8 @@ function LoggedInNav() {
   }
   return (
     <>
-      <Link to="/account">Account</Link>
+      <Link to="/events">Events</Link>
+      <Link to="/create-event">Create Event</Link>
       <button onClick={logout}>
         Log Out
       </button>
