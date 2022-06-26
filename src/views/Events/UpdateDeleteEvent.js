@@ -48,7 +48,10 @@ function UpdateEvent() {
       <h1>Update Event</h1>
       <Formik
         enableReinitialize
-        initialValues={{ name: event.name, id: id }}
+        initialValues={{
+          name: event.name,
+          id: id
+        }}
         validationSchema={Yup.object({
           name: Yup.string()
             .required('Required')
