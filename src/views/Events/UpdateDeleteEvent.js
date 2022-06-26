@@ -2,35 +2,34 @@ import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-function UpdateClient() {
+function UpdateEvent() {
 
-  const [client, setClient] = useState([]);
+  const [event, setEvent] = useState([]);
   const [message, setMessage] = useState([]);
 
   const queryString = window.location.search;
-  console.log(queryString);
   const urlParams = new URLSearchParams(queryString);
   const id = urlParams.get('id');
 
   useEffect(() => {
-    // Get client for initial load of page
-    const fetchClients = async () => {
-      fetch(process.env.REACT_APP_API_ORIGIN + '/client/' + id, {
+    // Get event
+    const fetchEvents = async () => {
+      fetch(process.env.REACT_APP_API_ORIGIN + '/event/' + id, {
         method: 'GET',
         credentials: 'include'
       })
         .then(response => response.json())
         .then(data => {
           console.log(data);
-          setClient(data);
+          setEvent(data);
         });
     };
-    fetchClients();
+    fetchEvents();
   }, [])
 
-  function deleteClient() {
-    // Delete client
-    fetch(process.env.REACT_APP_API_ORIGIN + '/client', {
+  function deleteEvent() {
+    // Delete event
+    fetch(process.env.REACT_APP_API_ORIGIN + '/event', {
       method: 'DELETE',
       credentials: 'include',
       headers: {
@@ -46,18 +45,18 @@ function UpdateClient() {
 
   return (
     <>
-      <h1>Update Client</h1>
+      <h1>Update Event</h1>
       <Formik
         enableReinitialize
-        initialValues={{ name: client.name, id: id }}
+        initialValues={{ name: event.name, id: id }}
         validationSchema={Yup.object({
           name: Yup.string()
             .required('Required')
         })}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(false);
-          // Update client
-          fetch(process.env.REACT_APP_API_ORIGIN + '/client', {
+          // Update event
+          fetch(process.env.REACT_APP_API_ORIGIN + '/event', {
             method: 'PUT',
             credentials: 'include',
             headers: {
@@ -72,7 +71,7 @@ function UpdateClient() {
         }}
       >
         <Form>
-          <label htmlFor="name">Client Name</label>
+          <label htmlFor="name">Event Name</label>
           <Field name="name" type="text" />
           <ErrorMessage name="name" />
 
@@ -80,7 +79,7 @@ function UpdateClient() {
         </Form>
       </Formik>
 
-      <button onClick={deleteClient}>
+      <button onClick={deleteEvent}>
         Delete
       </button>
 
@@ -89,4 +88,4 @@ function UpdateClient() {
   );
 }
 
-export default UpdateClient;
+export default UpdateEvent;

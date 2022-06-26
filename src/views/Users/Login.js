@@ -31,7 +31,7 @@ function Login() {
             .then(response => response.json())
             .then(data => {
               console.log(data);
-              if (data.message == 'Log in succeeded') {
+              if (data.message === 'Log in succeeded') {
                 const cookies = new Cookies();
                 cookies.set('loggedIn', 'true', { path: '/' });
                 window.location.href = window.location.origin;

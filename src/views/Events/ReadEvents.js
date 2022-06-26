@@ -14,7 +14,6 @@ function ReadEvents() {
       })
         .then(response => response.json())
         .then(data => {
-          console.log(data);
           setEvents(data);
         });
     };

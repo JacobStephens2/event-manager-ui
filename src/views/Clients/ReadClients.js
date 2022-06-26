@@ -14,7 +14,6 @@ function ReadClients() {
       })
         .then(response => response.json())
         .then(data => {
-          console.log(data);
           setClients(data);
         });
     };

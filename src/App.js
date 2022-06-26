@@ -4,20 +4,20 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import Home from './routes/Home';
-import NotFound from './routes/NotFound';
+import Home from './views/Home';
+import NotFound from './views/NotFound';
 import Nav from './components/Nav.js';
 
-import Login from './routes/Users/Login';
-import SignUp from './routes/Users/SignUp';
+import Login from './views/Users/Login';
+import SignUp from './views/Users/SignUp';
 
-import CreateEvent from './routes/Events/CreateEvent';
-import ReadEvents from './routes/Events/ReadEvents';
-import UpdateDeleteEvent from './routes/Events/UpdateDeleteEvent';
+import CreateEvent from './views/Events/CreateEvent';
+import ReadEvents from './views/Events/ReadEvents';
+import UpdateDeleteEvent from './views/Events/UpdateDeleteEvent';
 
-import CreateClient from './routes/Clients/CreateClient';
-import ReadClients from './routes/Clients/ReadClients';
-import UpdateDeleteClient from './routes/Clients/UpdateDeleteClient';
+import CreateClient from './views/Clients/CreateClient';
+import ReadClients from './views/Clients/ReadClients';
+import UpdateDeleteClient from './views/Clients/UpdateDeleteClient';
 
 function App() {
   return (
