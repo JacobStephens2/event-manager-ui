@@ -2,34 +2,34 @@ import React, { useState, useEffect } from 'react';
 import '../ReadObjects.css';
 import { Link } from "react-router-dom";
 
-function ReadEvents() {
+function ReadClients() {
 
-  const [events, setEvents] = useState([]);
+  const [clients, setClients] = useState([]);
 
   useEffect(() => {
-    const fetchEvents = async () => {
-      fetch(process.env.REACT_APP_API_ORIGIN + '/events', {
+    const fetchClients = async () => {
+      fetch(process.env.REACT_APP_API_ORIGIN + '/clients', {
         method: 'GET',
         credentials: 'include'
       })
         .then(response => response.json())
         .then(data => {
           console.log(data);
-          setEvents(data);
+          setClients(data);
         });
     };
-    fetchEvents();
+    fetchClients();
   }, [])
 
 
   return (
     <>
-      <h1>Events</h1>
+      <h1>Clients</h1>
       <ul>
-        {events.map((event) =>
-          <Link to={'/update-event?id=' + event.id} key={event.id}>
-            <li key={event.id}>
-              {event.name}
+        {clients.map((client) =>
+          <Link to={'/update-client?id=' + client.id} key={client.id}>
+            <li key={client.id}>
+              {client.name}
             </li>
           </Link>
         )}
@@ -38,4 +38,4 @@ function ReadEvents() {
   );
 }
 
-export default ReadEvents;
+export default ReadClients;

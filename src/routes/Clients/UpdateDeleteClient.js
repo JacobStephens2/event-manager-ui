@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-function UpdateEvent() {
+function UpdateClient() {
 
-  const [event, setEvent] = useState([]);
+  const [client, setClient] = useState([]);
+  const [message, setMessage] = useState([]);
 
   const queryString = window.location.search;
   console.log(queryString);
@@ -12,22 +13,24 @@ function UpdateEvent() {
   const id = urlParams.get('id');
 
   useEffect(() => {
-    const fetchEvents = async () => {
-      fetch(process.env.REACT_APP_API_ORIGIN + '/event/' + id, {
+    // Get client for initial load of page
+    const fetchClients = async () => {
+      fetch(process.env.REACT_APP_API_ORIGIN + '/client/' + id, {
         method: 'GET',
         credentials: 'include'
       })
         .then(response => response.json())
         .then(data => {
           console.log(data);
-          setEvent(data);
+          setClient(data);
         });
     };
-    fetchEvents();
+    fetchClients();
   }, [])
 
-  function deleteEvent() {
-    fetch(process.env.REACT_APP_API_ORIGIN + '/event', {
+  function deleteClient() {
+    // Delete client
+    fetch(process.env.REACT_APP_API_ORIGIN + '/client', {
       method: 'DELETE',
       credentials: 'include',
       headers: {
@@ -43,17 +46,18 @@ function UpdateEvent() {
 
   return (
     <>
-      <h1>Update Event</h1>
+      <h1>Update Client</h1>
       <Formik
         enableReinitialize
-        initialValues={{ name: event.name, id: id }}
+        initialValues={{ name: client.name, id: id }}
         validationSchema={Yup.object({
           name: Yup.string()
             .required('Required')
         })}
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(false);
-          fetch(process.env.REACT_APP_API_ORIGIN + '/event', {
+          // Update client
+          fetch(process.env.REACT_APP_API_ORIGIN + '/client', {
             method: 'PUT',
             credentials: 'include',
             headers: {
@@ -63,12 +67,12 @@ function UpdateEvent() {
           })
             .then(response => response.json())
             .then(data => {
-              console.log(data);
+              setMessage(data.name + ' updated');
             })
         }}
       >
         <Form>
-          <label htmlFor="name">Event Name</label>
+          <label htmlFor="name">Client Name</label>
           <Field name="name" type="text" />
           <ErrorMessage name="name" />
 
@@ -76,11 +80,13 @@ function UpdateEvent() {
         </Form>
       </Formik>
 
-      <button onClick={deleteEvent}>
+      <button onClick={deleteClient}>
         Delete
       </button>
+
+      <p>{message}</p>
     </>
   );
 }
 
-export default UpdateEvent;
+export default UpdateClient;

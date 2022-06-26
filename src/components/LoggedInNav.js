@@ -13,6 +13,10 @@ function LoggedInNav() {
     <>
       <Link to="/events">Events</Link>
       <Link to="/create-event">Create Event</Link>
+
+      <Link to="/clients">Clients</Link>
+      <Link to="/create-client">Create Client</Link>
+
       <button onClick={logout}>
         Log Out
       </button>
