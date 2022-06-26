@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 function CreateEvent() {
+
+  const [message, setMessage] = useState([]);
 
   return (
     <>
@@ -25,7 +27,7 @@ function CreateEvent() {
           })
             .then(response => response.json())
             .then(data => {
-              console.log(data);
+              setMessage(data.name + ' created.');
             })
         }}
       >
@@ -37,6 +39,8 @@ function CreateEvent() {
           <button type="submit">Create</button>
         </Form>
       </Formik>
+
+      <p>{message}</p>
 
     </>
   );
