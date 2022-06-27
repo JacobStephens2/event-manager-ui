@@ -18,6 +18,12 @@ function CreateEvent() {
           console.log(data);
           setClients(data);
           setSelectedClient(data[0].id);
+          const queryString = window.location.search;
+          const urlParams = new URLSearchParams(queryString);
+          const id = urlParams.get('client_id');
+          if (id > 0) {
+            setSelectedClient(id);
+          }
         });
     };
     fetchClients();
