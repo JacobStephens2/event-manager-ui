@@ -23,6 +23,9 @@ function ReadEvents() {
   return (
     <>
       <h1>Events</h1>
+      <Link to="/create-event">
+        <button>Create Event</button>
+      </Link>
       <ul>
         {events.map((event) =>
           <Link to={'/update-event?id=' + event.event_id} key={event.id}>

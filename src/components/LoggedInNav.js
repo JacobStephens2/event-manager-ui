@@ -22,10 +22,8 @@ function LoggedInNav() {
   return (
     <>
       <Link to="/clients">Clients</Link>
-      <Link to="/create-client">Create Client</Link>
 
       <Link to="/events">Events</Link>
-      <Link to="/create-event">Create Event</Link>
 
       <button onClick={logout}>
         Log Out

@@ -45,7 +45,7 @@ function UpdateEvent() {
 
   return (
     <>
-      <h1>Update Event</h1>
+      <h1>{event.name}</h1>
       <Formik
         enableReinitialize
         initialValues={{

@@ -19,3 +19,7 @@ code {
 select {
   margin-bottom: 1.3rem;
 }
+
+a {
+  text-decoration: none;
+}

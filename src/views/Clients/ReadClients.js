@@ -24,6 +24,9 @@ function ReadClients() {
   return (
     <>
       <h1>Clients</h1>
+      <Link to="/create-client">
+        <button>Create Client</button>
+      </Link>
       <ul>
         {clients.map((client) =>
           <Link to={'/update-client?id=' + client.id} key={client.id}>

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Link } from "react-router-dom";
 import * as Yup from 'yup';
 
 function UpdateClient() {
 
   const [client, setClient] = useState([]);
   const [message, setMessage] = useState([]);
+  const [events, setEvents] = useState([]);
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -25,6 +27,20 @@ function UpdateClient() {
         });
     };
     fetchClients();
+
+    // Get client's events for initial load of page by client id
+    const fetchClientEvents = async () => {
+      fetch(process.env.REACT_APP_API_ORIGIN + '/client/' + id + '/events', {
+        method: 'GET',
+        credentials: 'include'
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          setEvents(data);
+        });
+    };
+    fetchClientEvents();
   }, [])
 
   function deleteClient() {
@@ -48,7 +64,18 @@ function UpdateClient() {
 
   return (
     <>
-      <h1>Update Client</h1>
+      <h1>{client.name}</h1>
+
+      <h2>Events</h2>
+      <ul>
+        {events.map((event) =>
+          <Link to={'/update-event?id=' + event.event_id} key={event.id}>
+            <li key={event.id}>
+              {event.event_name}, {event.client_name}
+            </li>
+          </Link>
+        )}
+      </ul>
 
       <Formik
         enableReinitialize
