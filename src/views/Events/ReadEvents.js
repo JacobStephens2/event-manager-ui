@@ -20,15 +20,14 @@ function ReadEvents() {
     fetchEvents();
   }, [])
 
-
   return (
     <>
       <h1>Events</h1>
       <ul>
         {events.map((event) =>
-          <Link to={'/update-event?id=' + event.id} key={event.id}>
+          <Link to={'/update-event?id=' + event.event_id} key={event.id}>
             <li key={event.id}>
-              {event.name}
+              {event.event_name}, {event.client_name}
             </li>
           </Link>
         )}

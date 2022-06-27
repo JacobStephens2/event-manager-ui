@@ -5,6 +5,7 @@ function CreateEvent() {
   const [message, setMessage] = useState('');
   const [clients, setClients] = useState([]);
   const [eventName, setEventName] = useState('');
+  const [selectedClientID, setSelectedClient] = useState(0);
 
   useEffect(() => {
     const fetchClients = async () => {
@@ -16,6 +17,7 @@ function CreateEvent() {
         .then(data => {
           console.log(data);
           setClients(data);
+          setSelectedClient(data[0].id);
         });
     };
     fetchClients();
@@ -25,21 +27,28 @@ function CreateEvent() {
     setEventName(event.target.value);
   }
 
+  function handleClientSelectionChange(event) {
+    setSelectedClient(event.target.value);
+  }
+
   function handleSubmit(event) {
-    alert('Event ' + eventName + ' was created');
     event.preventDefault();
-    // fetch(process.env.REACT_APP_API_ORIGIN + '/event', {
-    //   method: 'POST',
-    //   credentials: 'include',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify('hello', null, 2)
-    // })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setMessage(data.name + ' created.');
-    //   })
+    let requestBody = {
+      "name": eventName,
+      "client_id": selectedClientID
+    }
+    fetch(process.env.REACT_APP_API_ORIGIN + '/event', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody, null, 2)
+    })
+      .then(response => response.json())
+      .then(data => {
+        setMessage(data.name + ' created.');
+      })
   }
 
   return (
@@ -52,7 +61,7 @@ function CreateEvent() {
         </label>
 
         <label htmlFor="client">Client Name</label>
-        <select>
+        <select value={selectedClientID} onChange={handleClientSelectionChange}>
           {clients.map((client) =>
             <option key={client.id} value={client.id}>
               {client.name}
