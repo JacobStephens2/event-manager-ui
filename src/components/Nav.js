@@ -9,7 +9,7 @@ function Login() {
   const cookies = new Cookies();
 
   function setMenuByLoginStatus() {
-    if (cookies.get('loggedIn') == 'true') {
+    if (cookies.get('loggedIn') === 'true') {
       return <LoggedInNav />
     } else {
       return <LoggedOutNav />
