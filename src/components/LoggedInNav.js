@@ -1,21 +1,31 @@
 import './Nav.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import Cookies from 'universal-cookie';
 
 function LoggedInNav() {
+
   function logout() {
-    const cookies = new Cookies();
-    cookies.set('loggedIn', 'false', { path: '/' });
-    window.location.href = window.location.origin;
+
+    fetch(process.env.REACT_APP_API_ORIGIN + '/logout', {
+      method: 'POST',
+      credentials: 'include'
+    })
+      .then(response => response.json())
+      .then(data => {
+        const cookies = new Cookies();
+        cookies.set('loggedIn', 'false', { path: '/' });
+        window.location.href = window.location.origin;
+      })
+
   }
   return (
     <>
-      <Link to="/events">Events</Link>
-      <Link to="/create-event">Create Event</Link>
-
       <Link to="/clients">Clients</Link>
       <Link to="/create-client">Create Client</Link>
+
+      <Link to="/events">Events</Link>
+      <Link to="/create-event">Create Event</Link>
 
       <button onClick={logout}>
         Log Out
