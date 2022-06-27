@@ -67,6 +67,9 @@ function UpdateClient() {
       <h1>{client.name}</h1>
 
       <h2>Events</h2>
+      <Link to={'/create-event?client_id=' + client.id}>
+        <button>Create Event</button>
+      </Link>
       <ul>
         {events.map((event) =>
           <Link to={'/update-event?id=' + event.event_id} key={event.id}>
