@@ -23,3 +23,26 @@ select {
 a {
   text-decoration: none;
 }
+
+input[type='email'],
+input[type='text'] {
+  width: 12rem;
+}
+
+section {
+  width: min(29rem, 95vw);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul {
+  padding-left: 1.7rem;
+}
+
+h2 {
+  margin-top: 2.1rem;
+}
+
+h1 {
+  font-size: 2rem;
+}

@@ -24,25 +24,27 @@ function App() {
     <>
       <BrowserRouter>
         <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
+        <section>
+          <Routes>
+            <Route path="/" element={<Home />} />
 
-          {/* Users */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/sign-up" element={<SignUp />} />
+            {/* Users */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/sign-up" element={<SignUp />} />
 
-          {/* Events */}
-          <Route path="/events" element={<ReadEvents />} />
-          <Route path="/create-event" element={<CreateEvent />} />
-          <Route path="/update-event" element={<UpdateDeleteEvent />} />
+            {/* Events */}
+            <Route path="/events" element={<ReadEvents />} />
+            <Route path="/create-event" element={<CreateEvent />} />
+            <Route path="/update-event" element={<UpdateDeleteEvent />} />
 
-          {/* Clients */}
-          <Route path="/clients" element={<ReadClients />} />
-          <Route path="/create-client" element={<CreateClient />} />
-          <Route path="/update-client" element={<UpdateDeleteClient />} />
+            {/* Clients */}
+            <Route path="/clients" element={<ReadClients />} />
+            <Route path="/create-client" element={<CreateClient />} />
+            <Route path="/update-client" element={<UpdateDeleteClient />} />
 
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </section>
       </BrowserRouter>
     </>
   )

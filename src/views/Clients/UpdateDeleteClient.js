@@ -5,9 +5,10 @@ import * as Yup from 'yup';
 
 function UpdateClient() {
 
-  const [client, setClient] = useState([]);
+  const [client, setClient] = useState('');
   const [message, setMessage] = useState([]);
   const [events, setEvents] = useState([]);
+  const [email, setEmail] = useState('');
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -24,6 +25,7 @@ function UpdateClient() {
         .then(data => {
           console.log(data);
           setClient(data);
+          setEmail(data.email);
         });
     };
     fetchClients();
@@ -74,17 +76,25 @@ function UpdateClient() {
         {events.map((event) =>
           <Link to={'/update-event?id=' + event.event_id} key={event.id}>
             <li key={event.id}>
-              {event.event_name}, {event.client_name}
+              {event.event_name}
             </li>
           </Link>
         )}
       </ul>
 
+      <h2>{client.name} Details</h2>
       <Formik
         enableReinitialize
-        initialValues={{ name: client.name, id: id }}
+        initialValues={{
+          name: client.name,
+          id: id,
+          email: email
+        }}
         validationSchema={Yup.object({
           name: Yup.string()
+            .required('Required'),
+          email: Yup.string()
+            .email('Invalid email address')
             .required('Required')
         })}
         onSubmit={(values, { setSubmitting }) => {
@@ -105,9 +115,13 @@ function UpdateClient() {
         }}
       >
         <Form>
-          <label htmlFor="name">Client Name</label>
+          <label htmlFor="name">Name</label>
           <Field name="name" type="text" />
           <ErrorMessage name="name" />
+
+          <label htmlFor="email">Email</label>
+          <Field name="email" type="email" />
+          <ErrorMessage name="email" />
 
           <button type="submit">Update</button>
         </Form>
