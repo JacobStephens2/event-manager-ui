@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Link } from "react-router-dom";
 import * as Yup from 'yup';
+import SendEmail from '../../components/SendEmail.js';
 
 function UpdateClient() {
 
   const [client, setClient] = useState('');
   const [message, setMessage] = useState([]);
   const [events, setEvents] = useState([]);
-  const [email, setEmail] = useState('');
+  const [destinationEmailAddress, setDestinationEmailAddress] = useState('');
+  const [emailBody, setEmailBody] = useState('');
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -25,7 +27,7 @@ function UpdateClient() {
         .then(data => {
           console.log(data);
           setClient(data);
-          setEmail(data.email);
+          setDestinationEmailAddress(data.email);
         });
     };
     fetchClients();
@@ -64,6 +66,10 @@ function UpdateClient() {
       });
   }
 
+  function handleEmailMessageChange(event) {
+    setEmailBody(event.target.value);
+  }
+
   return (
     <>
       <h1>{client.name}</h1>
@@ -88,7 +94,7 @@ function UpdateClient() {
         initialValues={{
           name: client.name,
           id: id,
-          email: email
+          email: destinationEmailAddress,
         }}
         validationSchema={Yup.object({
           name: Yup.string()
@@ -130,6 +136,24 @@ function UpdateClient() {
       <button onClick={deleteClient}>
         Delete
       </button>
+
+      <form>
+        <label htmlFor="emailBody">
+          Email Message
+        </label>
+        <textarea
+          name="emailBody"
+          rows="8"
+          cols="40"
+          value={emailBody}
+          onChange={handleEmailMessageChange}
+        ></textarea>
+      </form>
+
+      <SendEmail
+        destinationEmail={destinationEmailAddress}
+        body={emailBody}
+      />
 
       <p>{message}</p>
     </>

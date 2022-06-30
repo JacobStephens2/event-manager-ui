@@ -78,7 +78,6 @@ function CreateEvent() {
         <input type="submit" value="Create" />
       </form>
 
-
       <p>{message}</p>
 
     </>
