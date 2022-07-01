@@ -1,5 +1,4 @@
 import React from 'react';
-import './Login.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Cookies from 'universal-cookie';
