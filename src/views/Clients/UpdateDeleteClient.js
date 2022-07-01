@@ -78,15 +78,20 @@ function UpdateClient() {
       <Link to={'/create-event?client_id=' + client.id}>
         <button>Create Event</button>
       </Link>
-      <ul>
+      <table>
+        <th>
+          Event Name
+        </th>
         {events.map((event) =>
-          <Link to={'/update-event?id=' + event.event_id} key={event.id}>
-            <li key={event.id}>
-              {event.event_name}
-            </li>
-          </Link>
+          <tr>
+            <td>
+              <Link to={'/update-event?id=' + event.event_id} key={event.id}>
+                {event.event_name}
+              </Link>
+            </td>
+          </tr>
         )}
-      </ul>
+      </table>
 
       <h2>{client.name} Details</h2>
       <Formik
