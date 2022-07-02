@@ -6,6 +6,7 @@ function CreateEvent() {
   const [clients, setClients] = useState([]);
   const [eventName, setEventName] = useState('');
   const [selectedClientID, setSelectedClient] = useState(0);
+  const [date, setDate] = useState('');
 
   useEffect(() => {
     const fetchClients = async () => {
@@ -37,6 +38,10 @@ function CreateEvent() {
     setSelectedClient(event.target.value);
   }
 
+  function handleDateChange(event) {
+    setDate(event.target.value);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     let requestBody = {
@@ -64,6 +69,11 @@ function CreateEvent() {
         <label htmlFor="name">
           Event Name
           <input name="name" type="text" value={eventName} onChange={handleEventNameChange}></input>
+        </label>
+
+        <label htmlFor="date">
+          Event Name
+          <input name="date" type="date" value={date} onChange={handleDateChange}></input>
         </label>
 
         <label htmlFor="client">Client Name</label>

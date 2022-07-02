@@ -10,7 +10,9 @@ function CreateClient() {
     <>
       <h1>Create Client</h1>
       <Formik
-        initialValues={{ name: '' }}
+        initialValues={{
+          name: ''
+        }}
         validationSchema={Yup.object({
           name: Yup.string()
             .required('Required')
