@@ -4,7 +4,8 @@ import * as Yup from 'yup';
 
 function UpdateEvent() {
 
-  const [event, setEvent] = useState([]);
+  const [event, setEvent] = useState('');
+  const [date, setDate] = useState('');
   const [message, setMessage] = useState([]);
 
   const queryString = window.location.search;
@@ -50,6 +51,7 @@ function UpdateEvent() {
         enableReinitialize
         initialValues={{
           name: event.name,
+          date: date,
           id: id
         }}
         validationSchema={Yup.object({
@@ -77,6 +79,10 @@ function UpdateEvent() {
           <label htmlFor="name">Event Name</label>
           <Field name="name" type="text" />
           <ErrorMessage name="name" />
+
+          <label htmlFor="date">Date</label>
+          <Field name="date" type="date" />
+          <ErrorMessage name="date" />
 
           <button type="submit">Update</button>
         </Form>
