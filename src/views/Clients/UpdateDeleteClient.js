@@ -80,14 +80,20 @@ function UpdateClient() {
       </Link>
       <table>
         <th>
-          Event Name
+          Name
+        </th>
+        <th>
+          Date
         </th>
         {events.map((event) =>
           <tr>
             <td>
-              <Link to={'/update-event?id=' + event.event_id} key={event.id}>
+              <Link to={'/update-event?id=' + event.event_id + '&client_id=' + client.id} key={event.id}>
                 {event.event_name}
               </Link>
+            </td>
+            <td>
+              {event.event_date}
             </td>
           </tr>
         )}
