@@ -7,6 +7,7 @@ function UpdateEvent() {
   const [event, setEvent] = useState('');
   const [date, setDate] = useState('');
   const [message, setMessage] = useState([]);
+  const [client, setClient] = useState([]);
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -23,9 +24,22 @@ function UpdateEvent() {
         .then(data => {
           console.log(data);
           setEvent(data);
+          setDate(data.date)
         });
     };
     fetchEvents();
+    const fetchClient = async () => {
+      fetch(process.env.REACT_APP_API_ORIGIN + '/client/' + urlParams.get('client_id'), {
+        method: 'GET',
+        credentials: 'include'
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          setClient(data);
+        });
+    };
+    fetchClient();
   }, [])
 
   function deleteEvent() {
@@ -47,6 +61,11 @@ function UpdateEvent() {
   return (
     <>
       <h1>{event.name}</h1>
+
+      <a href={'/update-client?id=' + client.id}>
+        <h2>{client.name}</h2>
+      </a>
+
       <Formik
         enableReinitialize
         initialValues={{
