@@ -26,15 +26,32 @@ function ReadEvents() {
       <Link to="/create-event">
         <button>Create Event</button>
       </Link>
-      <ul>
+      <table>
+        <th>
+          Client
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Date
+        </th>
         {events.map((event) =>
-          <Link to={'/update-event?id=' + event.event_id} key={event.id}>
-            <li key={event.id}>
-              {event.event_name}, {event.client_name}
-            </li>
-          </Link>
+          <tr>
+            <td>
+              <Link to={'/update-event?id=' + event.event_id} key={event.id}>
+                {event.client_name}
+              </Link>
+            </td>
+            <td>
+              {event.event_name}
+            </td>
+            <td>
+              {event.event_date}
+            </td>
+          </tr>
         )}
-      </ul>
+      </table>
     </>
   );
 }
