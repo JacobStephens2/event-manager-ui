@@ -6,13 +6,38 @@ function CreateTask() {
   const [taskDescription, setTaskDescription] = useState([]);
   const [taskDueDate, setTaskDueDate] = useState([]);
 
+  const [events, setEvents] = useState([]);
+  const [selectedEventID, setSelectedEventID] = useState('');
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      fetch(process.env.REACT_APP_API_ORIGIN + '/events', {
+        method: 'GET',
+        credentials: 'include'
+      })
+        .then(response => response.json())
+        .then(events => {
+          console.log(events);
+          setEvents(events);
+          const queryString = window.location.search;
+          const urlParams = new URLSearchParams(queryString);
+          const id = urlParams.get('client_id');
+          if (id > 0) {
+            setSelectedEventID(id);
+          }
+        });
+    };
+    fetchEvents();
+  }, [])
+
   function handleSubmit(event) {
     event.preventDefault();
     let requestBody = {
       "description": taskDescription,
       "due_date": taskDueDate,
+      "event_id": selectedEventID
     }
-    fetch(process.env.REACT_APP_API_ORIGIN + '/task', {
+    fetch(process.env.REACT_APP_API_ORIGIN + '/event-task', {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -34,6 +59,10 @@ function CreateTask() {
     setTaskDueDate(event.target.value);
   }
 
+  function handleEventSelectionChange(event) {
+    setSelectedEventID(event.target.value[0]);
+  }
+
   return (
     <>
       <h1>Create Task</h1>
@@ -48,7 +77,14 @@ function CreateTask() {
           <input name="date" type="date" value={taskDueDate} onChange={handleDueDateChange}></input>
         </label>
 
-        {/* Add client selector */}
+        <label htmlFor="event">Event Name</label>
+        <select value={selectedEventID} onChange={handleEventSelectionChange}>
+          {events.map((event) =>
+            <option key={event.id} value={event.id}>
+              {event.event_name}, {event.client_name}
+            </option>
+          )}
+        </select>
 
         <input type="submit" value="Create" />
       </form>

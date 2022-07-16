@@ -14,7 +14,7 @@ function UpdateTask() {
   useEffect(() => {
     // Get task
     const fetchTask = async () => {
-      fetch(process.env.REACT_APP_API_ORIGIN + '/task/' + id, {
+      fetch(process.env.REACT_APP_API_ORIGIN + '/event-task/' + id, {
         method: 'GET',
         credentials: 'include'
       })
@@ -36,7 +36,7 @@ function UpdateTask() {
       "due_date": taskDueDate,
       "id": taskID
     }
-    fetch(process.env.REACT_APP_API_ORIGIN + '/task', {
+    fetch(process.env.REACT_APP_API_ORIGIN + '/event-task', {
       method: 'PUT',
       credentials: 'include',
       headers: {
@@ -58,6 +58,22 @@ function UpdateTask() {
     setTaskDueDate(event.target.value);
   }
 
+  function deleteTask() {
+    // Delete task
+    fetch(process.env.REACT_APP_API_ORIGIN + '/event-task', {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: id }, null, 2)
+    })
+      .then(response => response.json())
+      .then(data => {
+        window.location.href = window.location.origin;
+      });
+  }
+
   return (
     <>
       <h1>
@@ -76,6 +92,10 @@ function UpdateTask() {
 
         <input type="submit" value="Update" />
       </form>
+
+      <button onClick={deleteTask}>
+        Delete
+      </button>
 
       <p>{message}</p>
     </>

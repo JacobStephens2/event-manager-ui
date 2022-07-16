@@ -8,7 +8,7 @@ function ReadTasks() {
 
   useEffect(() => {
     const fetchTasks = async () => {
-      fetch(process.env.REACT_APP_API_ORIGIN + '/tasks', {
+      fetch(process.env.REACT_APP_API_ORIGIN + '/event-tasks', {
         method: 'GET',
         credentials: 'include'
       })
