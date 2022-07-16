@@ -65,6 +65,7 @@ function CreateEvent() {
   return (
     <>
       <h1>Create Event</h1>
+
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">
           Event Name
@@ -72,7 +73,7 @@ function CreateEvent() {
         </label>
 
         <label htmlFor="date">
-          Event Name
+          Event Date
           <input name="date" type="date" value={date} onChange={handleDateChange}></input>
         </label>
 

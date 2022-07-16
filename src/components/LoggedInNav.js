@@ -25,6 +25,8 @@ function LoggedInNav() {
 
       <Link to="/events">Events</Link>
 
+      <Link to="/tasks">Tasks</Link>
+
       <button onClick={logout}>
         Log Out
       </button>

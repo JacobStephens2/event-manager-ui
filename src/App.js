@@ -19,6 +19,10 @@ import CreateClient from './views/Clients/CreateClient';
 import ReadClients from './views/Clients/ReadClients';
 import UpdateDeleteClient from './views/Clients/UpdateDeleteClient';
 
+import CreateTask from './views/Tasks/CreateTask';
+import ReadTasks from './views/Tasks/ReadTasks';
+import UpdateDeleteTask from './views/Tasks/UpdateDeleteTask';
+
 function App() {
   return (
     <>
@@ -41,6 +45,11 @@ function App() {
             <Route path="/clients" element={<ReadClients />} />
             <Route path="/create-client" element={<CreateClient />} />
             <Route path="/update-client" element={<UpdateDeleteClient />} />
+
+            {/* Tasks */}
+            <Route path="/tasks" element={<ReadTasks />} />
+            <Route path="/create-task" element={<CreateTask />} />
+            <Route path="/update-task" element={<UpdateDeleteTask />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>
