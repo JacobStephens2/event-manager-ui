@@ -46,6 +46,7 @@ function CreateEvent() {
     event.preventDefault();
     let requestBody = {
       "name": eventName,
+      "date": date,
       "client_id": selectedClientID
     }
     fetch(process.env.REACT_APP_API_ORIGIN + '/event', {
