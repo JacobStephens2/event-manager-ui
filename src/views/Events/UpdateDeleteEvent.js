@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { Link } from "react-router-dom";
 
 function UpdateEvent() {
 
@@ -8,13 +9,13 @@ function UpdateEvent() {
   const [date, setDate] = useState('');
   const [message, setMessage] = useState([]);
   const [client, setClient] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const id = urlParams.get('id');
 
   useEffect(() => {
-    // Get event
     const fetchEvents = async () => {
       fetch(process.env.REACT_APP_API_ORIGIN + '/event/' + id, {
         method: 'GET',
@@ -28,6 +29,20 @@ function UpdateEvent() {
         });
     };
     fetchEvents();
+
+    const fetchTasksByEvent = async () => {
+      fetch(process.env.REACT_APP_API_ORIGIN + '/event/' + id + '/tasks', {
+        method: 'GET',
+        credentials: 'include'
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          setTasks(data);
+        });
+    };
+    fetchTasksByEvent();
+
     const fetchClient = async () => {
       fetch(process.env.REACT_APP_API_ORIGIN + '/client/' + urlParams.get('client_id'), {
         method: 'GET',
@@ -65,6 +80,31 @@ function UpdateEvent() {
       <a href={'/update-client?id=' + client.id}>
         <h2>{client.name}</h2>
       </a>
+
+      <h2>Tasks</h2>
+      <Link to={'/create-task?event_id=' + event.id}>
+        <button>Create Tasks</button>
+      </Link>
+      <table>
+        <th>
+          Event
+        </th>
+        <th>
+          Date
+        </th>
+        {tasks.map((task) =>
+          <tr>
+            <td>
+              <Link to={'/update-task?id=' + task.task_id + '&event_id=' + event.id} key={task.task_id}>
+                {task.task_description}
+              </Link>
+            </td>
+            <td>
+              {task.task_due_date}
+            </td>
+          </tr>
+        )}
+      </table>
 
       <Formik
         enableReinitialize
