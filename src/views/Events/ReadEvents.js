@@ -31,7 +31,7 @@ function ReadEvents() {
           Client
         </th>
         <th>
-          Name
+          Event
         </th>
         <th>
           Date
