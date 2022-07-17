@@ -92,6 +92,9 @@ function UpdateEvent() {
         <th>
           Due Date
         </th>
+        <th>
+          Status
+        </th>
         {tasks.map((task) =>
           <tr>
             <td>
@@ -101,6 +104,9 @@ function UpdateEvent() {
             </td>
             <td>
               {task.task_due_date}
+            </td>
+            <td>
+              {task.task_status}
             </td>
           </tr>
         )}
