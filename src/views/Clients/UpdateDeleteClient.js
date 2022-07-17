@@ -80,7 +80,7 @@ function UpdateClient() {
       </Link>
       <table>
         <th>
-          Name
+          Event
         </th>
         <th>
           Date
