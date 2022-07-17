@@ -6,6 +6,7 @@ function UpdateTask() {
   const [taskDescription, setTaskDescription] = useState([]);
   const [taskDueDate, setTaskDueDate] = useState([]);
   const [taskID, setTaskID] = useState([]);
+  const [taskStatus, setTaskStatus] = useState('To Do');
 
   const [events, setEvents] = useState([]);
   const [selectedEventID, setSelectedEventID] = useState('');
@@ -26,6 +27,7 @@ function UpdateTask() {
           console.log(task);
           setTaskDescription(task.description);
           setTaskDueDate(task.due_date);
+          setTaskStatus(task.status);
           setSelectedEventID(task.event_id);
           setTaskID(task.id);
         });
@@ -52,6 +54,7 @@ function UpdateTask() {
       "description": taskDescription,
       "due_date": taskDueDate,
       "event_id": selectedEventID,
+      "status": taskStatus,
       "id": taskID
     }
     fetch(process.env.REACT_APP_API_ORIGIN + '/event-task', {
@@ -76,6 +79,9 @@ function UpdateTask() {
   }
   function handleEventSelectionChange(event) {
     setSelectedEventID(event.target.value);
+  }
+  function handleTaskStatusChange(event) {
+    setTaskStatus(event.target.value);
   }
 
   function deleteTask() {
@@ -106,9 +112,16 @@ function UpdateTask() {
         </label>
 
         <label htmlFor="date">
-          Event Date
+          Due Date
           <input name="date" type="date" value={taskDueDate} onChange={handleDueDateChange}></input>
         </label>
+
+        <label htmlFor="event">Status</label>
+        <select value={taskStatus} onChange={handleTaskStatusChange}>
+          <option value="To Do">To Do</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Done">Done</option>
+        </select>
 
         <label htmlFor="event">Event Name</label>
         <select value={selectedEventID} onChange={handleEventSelectionChange}>

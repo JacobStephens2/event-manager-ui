@@ -36,6 +36,9 @@ function ReadTasks() {
         <th>
           Due Date
         </th>
+        <th>
+          Status
+        </th>
         {tasks.map((task) =>
           <tr key={task.id}>
             <td>
@@ -50,6 +53,9 @@ function ReadTasks() {
             </td>
             <td>
               {task.due_date}
+            </td>
+            <td>
+              {task.status}
             </td>
           </tr>
         )}
