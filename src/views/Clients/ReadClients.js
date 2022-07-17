@@ -27,15 +27,21 @@ function ReadClients() {
       <Link to="/create-client">
         <button>Create Client</button>
       </Link>
-      <ul>
+
+      <table>
+        <th>
+          Client
+        </th>
         {clients.map((client) =>
-          <Link to={'/update-client?id=' + client.id} key={client.id}>
-            <li key={client.id}>
-              {client.name}
-            </li>
-          </Link>
+          <tr key={client.id}>
+            <td>
+              <Link to={'/update-client?id=' + client.id}>
+                {client.name}
+              </Link>
+            </td>
+          </tr>
         )}
-      </ul>
+      </table>
     </>
   );
 }
