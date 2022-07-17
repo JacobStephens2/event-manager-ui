@@ -19,6 +19,7 @@ function CreateTask() {
         .then(events => {
           console.log(events);
           setEvents(events);
+          setSelectedEventID(events[0].event_id);
           const queryString = window.location.search;
           const urlParams = new URLSearchParams(queryString);
           const id = urlParams.get('client_id');
@@ -54,13 +55,11 @@ function CreateTask() {
   function handleTaskDescriptionChange(event) {
     setTaskDescription(event.target.value);
   }
-
   function handleDueDateChange(event) {
     setTaskDueDate(event.target.value);
   }
-
   function handleEventSelectionChange(event) {
-    setSelectedEventID(event.target.value[0]);
+    setSelectedEventID(event.target.value);
   }
 
   return (
@@ -80,8 +79,8 @@ function CreateTask() {
         <label htmlFor="event">Event Name</label>
         <select value={selectedEventID} onChange={handleEventSelectionChange}>
           {events.map((event) =>
-            <option key={event.id} value={event.id}>
-              {event.event_name}, {event.client_name}
+            <option key={event.event_id} value={event.event_id}>
+              {event.event_name} ({event.client_name})
             </option>
           )}
         </select>
