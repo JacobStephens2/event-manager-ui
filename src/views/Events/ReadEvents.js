@@ -28,10 +28,10 @@ function ReadEvents() {
       </Link>
       <table>
         <th>
-          Client
+          Event
         </th>
         <th>
-          Event
+          Client
         </th>
         <th>
           Date
@@ -39,13 +39,13 @@ function ReadEvents() {
         {events.map((event) =>
           <tr>
             <td>
-              <Link to={'/update-client?id=' + event.client_id} key={event.id}>
-                {event.client_name}
+              <Link to={'/update-event?id=' + event.event_id + '&client_id=' + event.client_id} key={event.id}>
+                {event.event_name}
               </Link>
             </td>
             <td>
-              <Link to={'/update-event?id=' + event.event_id + '&client_id=' + event.client_id} key={event.id}>
-                {event.event_name}
+              <Link to={'/update-client?id=' + event.client_id} key={event.id}>
+                {event.client_name}
               </Link>
             </td>
             <td>

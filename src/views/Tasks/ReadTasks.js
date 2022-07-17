@@ -30,10 +30,10 @@ function ReadTasks() {
 
       <table>
         <th>
-          Event
+          Task
         </th>
         <th>
-          Task
+          Event
         </th>
         <th>
           Due Date
@@ -44,13 +44,13 @@ function ReadTasks() {
         {tasks.map((task) =>
           <tr key={task.id}>
             <td>
-              <Link to={'/update-event?id=' + task.event_id}>
-                {task.event_name}
+              <Link to={'/update-task?id=' + task.id + '&event_id=' + task.event_id}>
+                {task.description}
               </Link>
             </td>
             <td>
-              <Link to={'/update-task?id=' + task.id + '&event_id=' + task.event_id}>
-                {task.description}
+              <Link to={'/update-event?id=' + task.event_id}>
+                {task.event_name}
               </Link>
             </td>
             <td>
