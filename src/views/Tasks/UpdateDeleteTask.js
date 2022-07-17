@@ -64,6 +64,22 @@ function UpdateTask() {
     fetchEvents();
   }, [])
 
+  function deleteTask() {
+    // Delete task
+    fetch(process.env.REACT_APP_API_ORIGIN + '/task', {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id: id }, null, 2)
+    })
+      .then(response => response.json())
+      .then(data => {
+        window.location.href = window.location.origin;
+      });
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     let requestBody = {
@@ -98,22 +114,6 @@ function UpdateTask() {
   }
   function handleTaskStatusChange(event) {
     setTaskStatus(event.target.value);
-  }
-
-  function deleteTask() {
-    // Delete task
-    fetch(process.env.REACT_APP_API_ORIGIN + '/task', {
-      method: 'DELETE',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id: id }, null, 2)
-    })
-      .then(response => response.json())
-      .then(data => {
-        window.location.href = window.location.origin;
-      });
   }
 
   return (
