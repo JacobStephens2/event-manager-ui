@@ -38,7 +38,7 @@ function CreateTask() {
       "due_date": taskDueDate,
       "event_id": selectedEventID
     }
-    fetch(process.env.REACT_APP_API_ORIGIN + '/event-task', {
+    fetch(process.env.REACT_APP_API_ORIGIN + '/task', {
       method: 'POST',
       credentials: 'include',
       headers: {

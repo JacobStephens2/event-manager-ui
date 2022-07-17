@@ -21,7 +21,7 @@ function UpdateTask() {
   useEffect(() => {
     // Get task
     const fetchTask = async () => {
-      fetch(process.env.REACT_APP_API_ORIGIN + '/event-task/' + id, {
+      fetch(process.env.REACT_APP_API_ORIGIN + '/task/' + id, {
         method: 'GET',
         credentials: 'include'
       })
@@ -73,7 +73,7 @@ function UpdateTask() {
       "status": taskStatus,
       "id": taskID
     }
-    fetch(process.env.REACT_APP_API_ORIGIN + '/event-task', {
+    fetch(process.env.REACT_APP_API_ORIGIN + '/task', {
       method: 'PUT',
       credentials: 'include',
       headers: {
@@ -102,7 +102,7 @@ function UpdateTask() {
 
   function deleteTask() {
     // Delete task
-    fetch(process.env.REACT_APP_API_ORIGIN + '/event-task', {
+    fetch(process.env.REACT_APP_API_ORIGIN + '/task', {
       method: 'DELETE',
       credentials: 'include',
       headers: {
