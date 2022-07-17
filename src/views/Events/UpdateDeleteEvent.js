@@ -87,10 +87,10 @@ function UpdateEvent() {
       </Link>
       <table>
         <th>
-          Event
+          Task
         </th>
         <th>
-          Date
+          Due Date
         </th>
         {tasks.map((task) =>
           <tr>
