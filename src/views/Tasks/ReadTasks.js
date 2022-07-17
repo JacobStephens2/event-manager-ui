@@ -37,14 +37,14 @@ function ReadTasks() {
           Due Date
         </th>
         {tasks.map((task) =>
-          <tr>
+          <tr key={task.id}>
             <td>
-              <Link to={'/update-event?id=' + task.event_id} key={task.id}>
+              <Link to={'/update-event?id=' + task.event_id}>
                 {task.event_name}
               </Link>
             </td>
             <td>
-              <Link to={'/update-task?id=' + task.id} key={task.id}>
+              <Link to={'/update-task?id=' + task.id}>
                 {task.description}
               </Link>
             </td>
