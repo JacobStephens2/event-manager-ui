@@ -5,6 +5,7 @@ function CreateTask() {
   const [message, setMessage] = useState('');
   const [taskDescription, setTaskDescription] = useState([]);
   const [taskDueDate, setTaskDueDate] = useState([]);
+  const [taskStatus, setTaskStatus] = useState('To Do');
 
   const [events, setEvents] = useState([]);
   const [selectedEventID, setSelectedEventID] = useState('');
@@ -36,6 +37,7 @@ function CreateTask() {
     let requestBody = {
       "description": taskDescription,
       "due_date": taskDueDate,
+      "status": taskStatus,
       "event_id": selectedEventID
     }
     fetch(process.env.REACT_APP_API_ORIGIN + '/task', {
@@ -61,6 +63,9 @@ function CreateTask() {
   function handleEventSelectionChange(event) {
     setSelectedEventID(event.target.value);
   }
+  function handleTaskStatusChange(event) {
+    setTaskStatus(event.target.value);
+  }
 
   return (
     <>
@@ -75,6 +80,13 @@ function CreateTask() {
           Task Due Date
           <input name="date" type="date" value={taskDueDate} onChange={handleDueDateChange}></input>
         </label>
+
+        <label htmlFor="event">Status</label>
+        <select value={taskStatus} onChange={handleTaskStatusChange}>
+          <option value="To Do">To Do</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Done">Done</option>
+        </select>
 
         <label htmlFor="event">Event Name</label>
         <select value={selectedEventID} onChange={handleEventSelectionChange}>
