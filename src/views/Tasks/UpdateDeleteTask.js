@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 function UpdateTask() {
 
@@ -9,11 +10,13 @@ function UpdateTask() {
   const [taskStatus, setTaskStatus] = useState('To Do');
 
   const [events, setEvents] = useState([]);
+  const [presetEvent, setPresetEvent] = useState([]);
   const [selectedEventID, setSelectedEventID] = useState('');
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const id = urlParams.get('id');
+  const urlParamEventID = urlParams.get('event_id');
 
   useEffect(() => {
     // Get task
@@ -33,6 +36,19 @@ function UpdateTask() {
         });
     };
     fetchTask();
+
+    const fetchEvent = async () => {
+      fetch(process.env.REACT_APP_API_ORIGIN + '/event/' + urlParamEventID, {
+        method: 'GET',
+        credentials: 'include'
+      })
+        .then(response => response.json())
+        .then(event => {
+          console.log(event);
+          setPresetEvent(event);
+        });
+    };
+    fetchEvent();
 
     const fetchEvents = async () => {
       fetch(process.env.REACT_APP_API_ORIGIN + '/events', {
@@ -105,6 +121,13 @@ function UpdateTask() {
       <h1>
         {taskDescription}
       </h1>
+
+      <Link to={'/update-event?id=' + presetEvent.id}>
+        <h2>
+          {presetEvent.name}
+        </h2>
+      </Link>
+
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">
           Task Description

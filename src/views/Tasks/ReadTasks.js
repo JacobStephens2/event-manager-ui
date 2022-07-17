@@ -47,7 +47,7 @@ function ReadTasks() {
               </Link>
             </td>
             <td>
-              <Link to={'/update-task?id=' + task.id}>
+              <Link to={'/update-task?id=' + task.id + '&event_id=' + task.event_id}>
                 {task.description}
               </Link>
             </td>

@@ -77,9 +77,9 @@ function UpdateEvent() {
     <>
       <h1>{event.name}</h1>
 
-      <a href={'/update-client?id=' + client.id}>
+      <Link to={'/update-client?id=' + client.id}>
         <h2>{client.name}</h2>
-      </a>
+      </Link>
 
       <h2>Tasks</h2>
       <Link to={'/create-task?event_id=' + event.id}>
@@ -145,7 +145,7 @@ function UpdateEvent() {
           <Field name="name" type="text" />
           <ErrorMessage name="name" />
 
-          <label htmlFor="date">Date</label>
+          <label htmlFor="date">Event Date</label>
           <Field name="date" type="date" />
           <ErrorMessage name="date" />
 
